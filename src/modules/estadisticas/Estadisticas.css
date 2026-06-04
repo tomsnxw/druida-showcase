@@ -1,117 +1,198 @@
+/* Faithful port of Druida's Estadísticas / Ventas view. */
+
 .est {
-  max-width: 980px;
-}
-.est-head {
-  margin-bottom: 22px;
-}
-
-.est-card {
-  background: var(--surface);
-  border: 1px solid #eef0f4;
-  border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
-  padding: 20px;
-}
-
-.est-kpis {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  margin-bottom: 16px;
-}
-.est-kpi {
   display: flex;
   flex-direction: column;
-  gap: 8px;
 }
-.est-kpi-label {
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--ink-faint);
-}
-.est-kpi-value {
-  font-size: 26px;
-  font-weight: 600;
-  color: var(--ink);
-}
-
-.est-chart {
+.est > .page-title {
   margin-bottom: 16px;
 }
-.est-chart h2 {
-  font-size: 15px;
-  font-weight: 500;
-  color: var(--ink-soft);
-  margin-bottom: 16px;
+
+/* "Ventas" section title with coral round icon. */
+.formtitle-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
-.est-chart-canvas {
-  height: 260px;
+.formicon-container {
+  display: flex;
+  width: 25px;
+  height: 25px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: var(--coral);
+}
+.formicon {
+  width: 14px;
+  height: 14px;
+  fill: #fff;
+}
+.formtitle {
+  color: var(--coral);
+  font-size: 18px;
+  font-weight: 400;
+  margin: 0;
+}
+.est-divider {
+  border: 0;
+  height: 1px;
+  width: 100%;
+  margin: 7px 0 20px;
+  background: var(--title); /* mauve → coral */
 }
 
-.est-ranks {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-}
-.est-rank-title {
+/* Currency selector. */
+.currency-selector {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 15px;
-  font-weight: 500;
-  color: var(--ink-soft);
-  margin-bottom: 16px;
-}
-.est-rank-emoji {
-  font-size: 16px;
-}
-.est-rank ol {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-.est-rank li {
-  display: flex;
-  align-items: baseline;
-  gap: 12px;
-}
-.est-rank-pos {
-  color: var(--chart);
-  font-size: 15px;
-  font-weight: 500;
-  width: 14px;
-  flex-shrink: 0;
-}
-.est-rank-body {
-  display: flex;
-  flex-direction: column;
-  gap: 1px;
-  min-width: 0;
-}
-.est-rank-value {
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--chart);
-}
-.est-rank-label {
+  margin-bottom: 18px;
   font-size: 14px;
-  color: var(--ink);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  color: var(--ink-soft);
+}
+.currency-button {
+  background: var(--pill);
+  border: none;
+  border-radius: 5rem;
+  padding: 4px 14px;
+  font-family: var(--font);
+  font-size: 13px;
+  color: var(--ink-soft);
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.currency-button.active {
+  background: var(--coral);
+  color: #fff;
 }
 
-.est-loading {
+/* Two charts side by side. */
+.est-charts-row {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.chart-container {
+  flex: 1;
+  min-width: 320px;
+  padding: 14px;
+  border: 1px solid #eef0f4;
+  border-radius: 10px;
+}
+.chart-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.chart-subtitle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 17px;
+  font-weight: 400;
+  color: #000;
+  margin: 0;
+}
+.chart-subtitle-icon {
+  width: 12px;
+  height: 12px;
+  fill: var(--ink-strong);
+}
+.chart-controls {
+  display: flex;
+  gap: 8px;
+}
+.est-select {
+  background: var(--pill);
+  border: none;
+  border-radius: 5rem;
+  font-family: var(--font);
+  font-size: 12px;
+  color: var(--ink);
+  padding: 5px 12px;
+  max-width: 170px;
+  cursor: pointer;
+  appearance: none;
+}
+.chart-total {
+  font-size: 13px;
+  color: var(--ink-soft);
+  margin: 12px 0 6px;
+}
+.chart-canvas {
+  height: 230px;
+}
+
+/* Four ranking lists. */
+.top-lists-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+  margin-top: 30px;
+}
+.top-list-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 10px;
+}
+.top-list-icon {
+  width: 16px;
+  height: 16px;
+  fill: var(--ink-strong);
+}
+.top-list-title {
+  font-size: 17px;
+  font-weight: 400;
+  margin: 0;
+}
+.top-list-items {
+  list-style: none;
+  margin: 0;
+  padding: 5px 0;
+  counter-reset: top-list-counter;
+  background: var(--chrome);
+  border-radius: 10px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.top-list-items:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.top-list-item {
+  counter-increment: top-list-counter;
+  display: flex;
+  flex-direction: column;
+  padding: 6px 15px 6px 35px;
+  position: relative;
+  color: var(--chart);
+}
+.top-list-item::before {
+  content: counter(top-list-counter);
+  position: absolute;
+  top: 6px;
+  left: 0;
+  padding-left: 12px;
+  font-size: 17px;
+  color: var(--chart);
+}
+.item-value {
+  font-size: 17px;
+}
+.item-name {
+  font-size: 14px;
+  color: var(--ink-strong);
+}
+
+.est-state {
   padding: 40px;
   color: var(--ink-soft);
 }
 
-@media (max-width: 760px) {
-  .est-kpis,
-  .est-ranks {
-    grid-template-columns: 1fr;
+@media (max-width: 1100px) {
+  .top-lists-row {
+    grid-template-columns: repeat(2, 1fr);
   }
 }

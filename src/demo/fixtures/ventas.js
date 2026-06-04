@@ -8,6 +8,9 @@
 // that aggregates it stays identical to production.
 // ──────────────────────────────────────────────────────────────────────────
 
+// Fixed reference rates so the ARS/BNA/CCL currency toggle works offline.
+export const DOLAR = { oficial: 1010, ccl: 1180 };
+
 function daysAgo(n) {
   const date = new Date();
   date.setDate(date.getDate() - n);
@@ -47,14 +50,17 @@ function buildVentas() {
   const cliSeq = weighted(clientesPool);
   const out = [];
   let counter = 0;
-  const DIAS = 60;
+  const DIAS = 420; // ~14 months, so the annual chart shows a real curve
 
   for (let day = DIAS - 1; day >= 0; day--) {
     const date = daysAgo(day);
-    const idx = DIAS - 1 - day;
     const dow = date.getDay();
 
-    let nSales = 2 + Math.round((idx / (DIAS - 1)) * 2); // 2..4, trending up
+    // Seasonal demand: a smooth peak roughly two thirds back in the window
+    // (a harvest-season high) plus weekend dips — gives the annual line shape.
+    const phase = ((DIAS - 1 - day) / DIAS) * Math.PI * 2;
+    const seasonal = 1 + 0.8 * Math.sin(phase - Math.PI / 2);
+    let nSales = Math.max(1, Math.round(2.5 * seasonal));
     if (dow === 0 || dow === 6) nSales = Math.max(1, nSales - 1);
 
     for (let s = 0; s < nSales; s++) {

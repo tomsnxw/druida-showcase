@@ -20,18 +20,6 @@ const COLLECTIONS = [
   "ventas",
 ];
 
-const COLLECTION_LABELS = {
-  viticultura: "Viticultura",
-  vinificacion: "Vinificación",
-  embotellado: "Embotellado",
-  trazabilidad: "Trazabilidad",
-  compras: "Compras",
-  stock: "Stock",
-  inventario: "Inventario",
-  clientes: "Clientes",
-  ventas: "Ventas",
-};
-
 // Only the traceability collections have a detail page in this showcase.
 const NAVIGABLE = new Set(["viticultura", "vinificacion", "embotellado", "trazabilidad"]);
 
@@ -119,28 +107,21 @@ export default function HeaderSearch() {
       </div>
 
       {open && (
-        <ul className="hs-dropdown">
+        <div className="hs-dropdown">
           {results.length > 0 ? (
             results.map((r) => (
-              <li
+              <div
                 key={`${r.collection}-${r.id}`}
-                className={`hs-result ${NAVIGABLE.has(r.collection) ? "" : "inert"}`}
+                className={`hs-option ${NAVIGABLE.has(r.collection) ? "" : "inert"}`}
                 onClick={() => select(r)}
               >
-                <span className={`hs-badge c-${r.collection}`}>
-                  {COLLECTION_LABELS[r.collection]}
-                </span>
-                <span className="hs-main">
-                  <span className="hs-label">{r.label}</span>
-                  {r.subtitle && <span className="hs-subtitle">{r.subtitle}</span>}
-                </span>
-                <span className="hs-id">{r.id}</span>
-              </li>
+                {r.label}
+              </div>
             ))
           ) : (
-            <li className="hs-empty">No se encontraron resultados.</li>
+            <div className="hs-option hs-empty">No se encontraron resultados</div>
           )}
-        </ul>
+        </div>
       )}
     </div>
   );

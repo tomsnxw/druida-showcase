@@ -90,11 +90,13 @@ collection is one entry in a map.
 
 ## 3 · Sales analytics — `src/modules/estadisticas`
 
-A Chart.js dashboard: KPIs, a 60-day daily-revenue line, and ranked top
-products / clients. All the maths is **pure and isolated** in
-[`analytics.js`](src/modules/estadisticas/analytics.js) (`summarize`,
-`dailyRevenue`, `topProductos`, `topClientes`), so the component is only
-presentation and the reducers are unit-testable without React in the room.
+A faithful rebuild of the *Ventas* dashboard: a currency toggle (ARS / BNA /
+CCL), two monthly/daily revenue line charts (overall and per-product), and four
+ranked Top 5 lists (products, clients, events, members). All the maths is **pure
+and isolated** in [`analytics.js`](src/modules/estadisticas/analytics.js)
+(`monthlyRevenue`, `dailyRevenue`, `topProductos`, `topClientes`, `topEventos`,
+`topMiembros`), so the component is only presentation and the reducers are
+unit-testable without React in the room.
 
 ---
 
