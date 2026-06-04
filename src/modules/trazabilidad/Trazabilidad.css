@@ -1,4 +1,11 @@
+.trz {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+}
 .trz-head {
+  flex: 0 0 auto;
   margin-bottom: 22px;
 }
 

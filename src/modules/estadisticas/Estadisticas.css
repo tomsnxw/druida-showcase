@@ -3,8 +3,11 @@
 .est {
   display: flex;
   flex-direction: column;
+  height: 100%;
+  min-height: 0;
 }
-.est > .page-title {
+.est-title {
+  flex: 0 0 auto;
   margin-bottom: 16px;
 }
 

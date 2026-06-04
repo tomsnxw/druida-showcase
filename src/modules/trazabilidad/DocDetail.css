@@ -4,10 +4,17 @@
 .doc-detail {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  height: 100%;
+  min-height: 0;
 }
-.doc-detail .page-title {
-  margin-bottom: 4px;
+.dd-title {
+  flex: 0 0 auto;
+  margin-bottom: 8px;
+}
+.doc-detail .page-scroll {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
 /* Detail header: icon + id, creado por, última modificación. */

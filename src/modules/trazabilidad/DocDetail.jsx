@@ -276,11 +276,13 @@ export default function DocDetail() {
     const Icon = ICONS[doc.coleccion] || SearchIcon;
     return (
       <div className="doc-detail">
-        <h1 className="page-title">Trazabilidad</h1>
-        <DocHeader Icon={Icon} doc={doc} showModified={Boolean(doc.modificador)} />
-        {doc.coleccion === "Viticultura" && <ViticulturaFields vit={doc} />}
-        {doc.coleccion === "Vinificacion" && <VinificacionFields vin={doc} onNavigate={goTo} />}
-        {doc.coleccion === "Embotellado" && <EmbotelladoFields emb={doc} onNavigate={goTo} />}
+        <h1 className="page-title dd-title">Trazabilidad</h1>
+        <div className="page-scroll">
+          <DocHeader Icon={Icon} doc={doc} showModified={Boolean(doc.modificador)} />
+          {doc.coleccion === "Viticultura" && <ViticulturaFields vit={doc} />}
+          {doc.coleccion === "Vinificacion" && <VinificacionFields vin={doc} onNavigate={goTo} />}
+          {doc.coleccion === "Embotellado" && <EmbotelladoFields emb={doc} onNavigate={goTo} />}
+        </div>
       </div>
     );
   }
@@ -291,7 +293,8 @@ export default function DocDetail() {
 
   return (
     <div className="doc-detail">
-      <h1 className="page-title">Trazabilidad</h1>
+      <h1 className="page-title dd-title">Trazabilidad</h1>
+      <div className="page-scroll">
       <DocHeader Icon={SearchIcon} doc={doc} showModified={false} />
 
       <ul className="tabs-nav">
@@ -324,6 +327,7 @@ export default function DocDetail() {
         {activeTraz === "embotellado" && (
           <EmbotelladoFields emb={doc.embotellado} onNavigate={goTo} showId />
         )}
+      </div>
       </div>
     </div>
   );

@@ -34,6 +34,14 @@
   box-sizing: border-box;
 }
 
+/* Hide every scrollbar app-wide — content still scrolls, the bar stays hidden. */
+* {
+  scrollbar-width: none;
+}
+*::-webkit-scrollbar {
+  display: none;
+}
+
 html,
 body,
 #root {
@@ -169,10 +177,21 @@ h3 {
 
 .content {
   flex: 1;
+  min-height: 0;
   background: var(--surface);
-  padding: 18px 28px 32px;
+  padding: 18px 28px 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* A module puts its title outside .page-scroll (so it stays fixed) and wraps the
+   rest in it; only this region scrolls, and its scrollbar is hidden globally. */
+.page-scroll {
+  flex: 1;
+  min-height: 0;
   overflow-y: auto;
-  scrollbar-width: thin;
+  padding-bottom: 32px;
 }
 
 /* Decorative right rail, mirroring the real app's quick-actions column. */

@@ -117,8 +117,9 @@ export default function Estadisticas() {
 
   return (
     <div className="est">
-      <h1 className="page-title">Estadísticas</h1>
+      <h1 className="page-title est-title">Estadísticas</h1>
 
+      <div className="page-scroll">
       <div className="formtitle-container">
         <div className="formicon-container">
           <EstadisticasIcon className="formicon" />
@@ -181,6 +182,7 @@ export default function Estadisticas() {
         <TopList Icon={EventosIcon} title="Top 5 Eventos" rows={tops.eventos} money={money} />
         <TopList Icon={MiembrosIcon} title="Top 5 Miembros" rows={tops.miembros} money={money} />
       </div>
+      </div>
     </div>
   );
 }
@@ -195,12 +197,12 @@ function ChartCard({ title, total, series, periodo, onPeriodo, compact, money, e
         data: series.map((p) => p.total),
         borderColor: "#e53935",
         borderWidth: 2,
-        tension: 0.3,
-        pointRadius: series.length > 40 ? 0 : 2,
+        tension: 0, // straight segments, like the original
+        pointRadius: 1,
         pointBackgroundColor: "#e53935",
-        pointHoverRadius: 4,
-        fill: true,
-        backgroundColor: "rgba(229,57,53,0.08)",
+        pointBorderColor: "#e53935",
+        pointHoverRadius: 2,
+        fill: false, // no area fill
       },
     ],
   };

@@ -150,6 +150,7 @@ export default function Trazabilidad() {
         <p className="page-sub">Cadena de custodia del viñedo a la botella.</p>
       </header>
 
+      <div className="page-scroll">
       <section className="trz-section">
         <h2 className="section-title">Recientes</h2>
         <div className="trz-recent-grid">
@@ -221,6 +222,7 @@ export default function Trazabilidad() {
           })}
         </div>
       </section>
+      </div>
     </div>
   );
 }
