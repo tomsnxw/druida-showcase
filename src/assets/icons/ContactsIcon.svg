@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="uuid-e5c7f122-0f1b-4b19-9c5c-6889aa78c8af" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1080 999.21">
+  <defs>
+    <style>
+      .uuid-62d38246-e080-4da1-949c-8da049ea1590 {
+        fill: #f8f9fc;
+      }
+
+      .uuid-4369f9a8-dd2b-4c1f-ad39-0774d53a9dab {
+        fill: #fff;
+      }
+
+      .uuid-62a39dab-331c-448a-b564-30d7718238ac {
+        fill: #8e8e8e;
+      }
+
+      .uuid-d8d0b41a-25e4-4fe8-a07f-bbbf3fe1ee1c {
+        fill: url(#uuid-4264a60c-eba5-4200-af7e-7f887f6033d3);
+      }
+    </style>
+    <linearGradient id="uuid-4264a60c-eba5-4200-af7e-7f887f6033d3" x1="-413.35" y1="499.61" x2="1169.92" y2="499.61" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#150335"/>
+      <stop offset=".08" stop-color="#320231"/>
+      <stop offset=".2" stop-color="#55012e"/>
+      <stop offset=".33" stop-color="#72012b"/>
+      <stop offset=".46" stop-color="#880028"/>
+      <stop offset=".61" stop-color="#980027"/>
+      <stop offset=".77" stop-color="#a20026"/>
+      <stop offset="1" stop-color="#a50026"/>
+    </linearGradient>
+  </defs>
+  <rect class="uuid-d8d0b41a-25e4-4fe8-a07f-bbbf3fe1ee1c" x="80.79" width="999.21" height="999.21" rx="149.88" ry="149.88"/>
+  <g>
+    <circle class="uuid-4369f9a8-dd2b-4c1f-ad39-0774d53a9dab" cx="174.83" cy="241.31" r="49.96"/>
+    <circle class="uuid-4369f9a8-dd2b-4c1f-ad39-0774d53a9dab" cx="174.83" cy="499.61" r="49.96"/>
+    <circle class="uuid-4369f9a8-dd2b-4c1f-ad39-0774d53a9dab" cx="174.83" cy="757.9" r="49.96"/>
+  </g>
+  <path class="uuid-62a39dab-331c-448a-b564-30d7718238ac" d="M174.84,266.27H24.98c-13.81,0-24.98-11.17-24.98-24.98s11.17-24.98,24.98-24.98h149.86c13.81,0,24.98,11.17,24.98,24.98s-11.17,24.98-24.98,24.98Z"/>
+  <path class="uuid-62a39dab-331c-448a-b564-30d7718238ac" d="M174.84,524.56H24.98c-13.81,0-24.98-11.17-24.98-24.98s11.17-24.98,24.98-24.98h149.86c13.81,0,24.98,11.17,24.98,24.98s-11.17,24.98-24.98,24.98Z"/>
+  <path class="uuid-62a39dab-331c-448a-b564-30d7718238ac" d="M174.84,782.91H24.98c-13.81,0-24.98-11.17-24.98-24.98s11.17-24.98,24.98-24.98h149.86c13.81,0,24.98,11.17,24.98,24.98s-11.17,24.98-24.98,24.98Z"/>
+  <circle class="uuid-62d38246-e080-4da1-949c-8da049ea1590" cx="577.71" cy="349.25" r="107.93"/>
+  <path class="uuid-62d38246-e080-4da1-949c-8da049ea1590" d="M400.46,572.89l-17.73,16.85c-46.96,44.64-15.37,123.73,49.42,123.73h296.47c65.27,0,96.62-80.08,48.71-124.4l-20.11-18.61c-100.96-93.39-257.09-92.33-356.77,2.42Z"/>
+</svg>

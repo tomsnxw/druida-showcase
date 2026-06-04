@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="uuid-1c03cc00-2979-4144-95da-49cb7d38f95e" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1080 1090.53">
+  <!-- Generator: Adobe Illustrator 29.8.1, SVG Export Plug-In . SVG Version: 2.1.1 Build 2)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: none;
+        stroke: #000;
+        stroke-miterlimit: 10;
+      }
+
+      .st1 {
+        fill: #dee2e6;
+      }
+
+      .st2 {
+        fill: #fff;
+      }
+
+      .st3 {
+        fill: url(#Degradado_sin_nombre);
+      }
+    </style>
+    <linearGradient id="Degradado_sin_nombre" data-name="Degradado sin nombre" x1="-242.74" y1="1055.74" x2="348.95" y2="1000" gradientTransform="translate(0 1090) scale(1 -1)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#150335"/>
+      <stop offset=".09" stop-color="#270233"/>
+      <stop offset=".4" stop-color="#5c012d"/>
+      <stop offset=".66" stop-color="#840029"/>
+      <stop offset=".87" stop-color="#9c0026"/>
+      <stop offset="1" stop-color="#a50026"/>
+    </linearGradient>
+  </defs>
+  <rect class="st0" x="29.16" y="29.16" width="1021.68" height="1021.68"/>
+  <g>
+    <rect class="st2" x=".25" y=".25" width="1079.5" height="1079.5"/>
+    <path class="st1" d="M1079.5.5v1079H.5V.5h1079M1080,0H0v1080h1080V0h0Z"/>
+  </g>
+  <rect class="st3" width="1080" height="216"/>
+</svg>

@@ -1,0 +1,122 @@
+# Druida · Showcase
+
+Three curated modules from **Druida**, a production ERP for a winery/vineyard
+(inventory, sales, purchasing, events, weather, and grape-to-bottle
+traceability). This repository is a self-contained slice of the front end, built
+to **run fully offline against demo fixtures** — no Firebase, no backend, no
+secrets.
+
+```bash
+npm install
+npm run dev      # → http://localhost:5173
+```
+
+Everything you see is fed by synthetic data shaped exactly like the production
+Firestore documents, so the UI and aggregation code run unchanged.
+
+---
+
+## Why these three
+
+Druida is a large app; these modules were chosen because each is **technically
+interesting, self-contained, and shows a concrete design decision** rather than
+boilerplate CRUD.
+
+| Module | What it shows |
+| --- | --- |
+| [Traceability](src/modules/trazabilidad) | Domain modelling: self-describing IDs, a derived state machine, natural-sort over composite codes |
+| [Global fuzzy search](src/modules/busqueda) | Normalizing nine heterogeneous collections into one fuzzy-searchable index |
+| [Sales analytics](src/modules/estadisticas) | Pure aggregation reducers feeding a Chart.js dashboard |
+
+---
+
+## 1 · Traceability — `src/modules/trazabilidad`
+
+The chain of custody from vineyard to bottle: *viticultura → vinificación →
+embotellado*, rolled up into a `trazabilidad` record.
+
+**Self-describing IDs.** Every document gets a human-readable composite code
+instead of an opaque UUID:
+
+```
+VIT 1 MAL C 0007 24
+│   │ │   │ │    └─ year
+│   │ │   │ └────── sequential counter
+│   │ │   └──────── origin (Cuartel)
+│   │ └──────────── grape variety (Malbec)
+│   └────────────── ownership (own land)
+└────────────────── stage (Viticulture)
+```
+
+A field worker can decode a lot on sight, and the codes group and sort naturally.
+The encoding rules live as pure, testable functions in
+[`loteCode.js`](src/modules/trazabilidad/loteCode.js) (`grapeCode`, `buildLotId`).
+
+**State as a function of data.** A record is `finalizado` only when every required
+field is filled; `deriveState()` walks the document recursively (through nested
+objects and arrays) so the status can never drift out of sync with the content —
+no flag for someone to forget to flip.
+
+**Natural sort.** Composite codes must order the way humans expect (2 before 10,
+not lexically). [`naturalSort.js`](src/modules/trazabilidad/naturalSort.js) splits
+each id into letter/number chunks and compares them piecewise.
+
+> The pure functions here are JS ports of the original Flask/Firestore backend
+> logic, isolated so the rule set is the single source of truth.
+
+## 2 · Global fuzzy search — `src/modules/busqueda`
+
+One search box over **nine collections** that share no schema — a wine lot, a
+client, an invoice, a stock line. Instead of fuzzy-matching over
+`Object.keys(firstDoc)` (guessing fields from one arbitrary document), each
+collection declares how to **project a document into a common record**
+`{ id, collection, label, subtitle, date }` in
+[`searchRecords.js`](src/modules/busqueda/searchRecords.js).
+
+The payoff: [Fuse.js](https://www.fusejs.io/) indexes a uniform shape with
+weighted fields, the results list renders identically for every type, and adding
+a collection is one entry in a map.
+
+## 3 · Sales analytics — `src/modules/estadisticas`
+
+A Chart.js dashboard: KPIs, a 60-day daily-revenue line, and ranked top
+products / clients. All the maths is **pure and isolated** in
+[`analytics.js`](src/modules/estadisticas/analytics.js) (`summarize`,
+`dailyRevenue`, `topProductos`, `topClientes`), so the component is only
+presentation and the reducers are unit-testable without React in the room.
+
+---
+
+## The demo seam
+
+The single design idea that makes this repo runnable with no secrets lives in
+[`src/services/dataService.js`](src/services/dataService.js):
+
+```js
+export async function getCollection(name) {
+  if (DEMO_MODE) return getDemoCollection(name);   // local fixtures
+  // else: getDocs(collection(db, name))           // Firestore, in production
+}
+```
+
+Every module reads through `getCollection(name)` and never imports Firebase
+directly. Because the [fixtures](src/demo/fixtures) match the production document
+shape 1:1, no `if (demo)` branches ever leak into the UI. Flip one constant and
+the same code runs against live Firestore.
+
+All names, codes, and figures in the fixtures are synthetic — there is no real
+client or company data anywhere in this repository.
+
+---
+
+## Stack
+
+React 19 · Vite · React Router · Chart.js · Fuse.js. Hand-written CSS with a
+small shared token set in [`src/styles/base.css`](src/styles/base.css) — no UI
+framework.
+
+## Screenshots
+
+| Traceability | Search | Analytics |
+| --- | --- | --- |
+| ![Traceability](docs/screenshots/trazabilidad.png) | ![Search](docs/screenshots/busqueda.png) | ![Analytics](docs/screenshots/estadisticas.png) |

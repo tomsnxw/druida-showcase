@@ -1,0 +1,137 @@
+.search {
+  max-width: 760px;
+}
+.search-head {
+  margin-bottom: 22px;
+}
+.search-head .page-sub {
+  max-width: 60ch;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--field);
+  border: 1px solid var(--field);
+  border-radius: 25px;
+  padding: 0 18px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+.search-box:focus-within {
+  background: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.search-glyph {
+  fill: var(--ink-mute);
+  flex-shrink: 0;
+}
+.search-box input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: none;
+  font-family: var(--font);
+  font-size: 15px;
+  color: var(--ink);
+  padding: 13px 0;
+}
+.search-clear {
+  border: none;
+  background: var(--pill);
+  color: var(--ink-soft);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.search-meta {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin: 18px 4px 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+.search-count {
+  font-weight: 400;
+  color: var(--ink-mute);
+}
+
+.search-results {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--line);
+}
+.search-result {
+  display: grid;
+  grid-template-columns: 132px 1fr auto auto;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 6px;
+  border-bottom: 1px solid var(--line);
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.search-result:hover {
+  background: #f0f1f1;
+}
+.search-result:hover .search-label {
+  color: var(--coral);
+}
+
+.search-badge {
+  font-size: 12px;
+  text-align: center;
+  padding: 4px 10px;
+  border-radius: 5rem;
+  background: var(--pill);
+  color: var(--ink-soft);
+}
+/* Collection accents so result types are scannable at a glance. */
+.search-badge.c-clientes { background: #f3eef6; color: #7a5c86; }
+.search-badge.c-ventas { background: #e7f6ea; color: var(--green); }
+.search-badge.c-viticultura,
+.search-badge.c-vinificacion,
+.search-badge.c-embotellado,
+.search-badge.c-trazabilidad { background: #fdecec; color: var(--coral); }
+.search-badge.c-compras,
+.search-badge.c-stock,
+.search-badge.c-inventario { background: #fdf2e1; color: #c8861f; }
+
+.search-main {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+.search-label {
+  font-size: 15px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.2s ease;
+}
+.search-subtitle {
+  font-size: 12px;
+  color: var(--ink-faint);
+}
+.search-id {
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+.search-date {
+  font-size: 13px;
+  color: var(--ink-mute);
+  white-space: nowrap;
+}
+.search-empty {
+  padding: 28px 6px;
+  color: var(--ink-soft);
+}

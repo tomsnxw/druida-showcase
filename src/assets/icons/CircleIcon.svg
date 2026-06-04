@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="uuid-d9ea8f22-4841-4f04-aaf5-c18841cd8957" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1028 1027.99">
+  <defs>
+    <style>
+      .uuid-98296bcf-b461-4714-8834-b2447c118c67 {
+        fill: url(#uuid-33a5bc9b-ab71-46bb-b21c-af37de850eb8);
+      }
+    </style>
+    <linearGradient id="uuid-33a5bc9b-ab71-46bb-b21c-af37de850eb8" x1="168.91" y1="81.3" x2="878.55" y2="971.09" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#a50026"/>
+      <stop offset=".13" stop-color="#9c0026"/>
+      <stop offset=".34" stop-color="#840029"/>
+      <stop offset=".6" stop-color="#5c012d"/>
+      <stop offset=".91" stop-color="#270233"/>
+      <stop offset="1" stop-color="#150335"/>
+    </linearGradient>
+  </defs>
+  <path class="uuid-98296bcf-b461-4714-8834-b2447c118c67" d="M514,1027.99C230.58,1027.99,0,797.42,0,513.99S230.58,0,514,0s514,230.58,514,513.99-230.58,514-514,514ZM514,103.97c-226.09,0-410.03,183.94-410.03,410.03s183.94,410.03,410.03,410.03,410.03-183.94,410.03-410.03S740.09,103.97,514,103.97Z"/>
+</svg>
