@@ -1,0 +1,134 @@
+/* Header search field + results dropdown. The field replaces the static
+   search bar in the top header; the dropdown floats below it. */
+.hs {
+  position: relative;
+  flex: 1;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.hs-field {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 40px;
+  padding: 0 18px;
+  background: var(--field);
+  border-radius: 25px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+.hs-field.active {
+  background: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.hs-field svg {
+  width: 15px;
+  height: 15px;
+  fill: var(--ink-mute);
+  flex-shrink: 0;
+}
+.hs-field input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: var(--font);
+  font-size: 14px;
+  color: var(--ink);
+}
+.hs-clear {
+  border: none;
+  background: var(--pill);
+  color: var(--ink-soft);
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  font-size: 15px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.hs-dropdown {
+  position: absolute;
+  top: 48px;
+  left: 0;
+  right: 0;
+  z-index: 60;
+  list-style: none;
+  margin: 0;
+  padding: 6px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.14);
+  max-height: 60vh;
+  overflow-y: auto;
+}
+.hs-result {
+  display: grid;
+  grid-template-columns: 120px 1fr auto;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.hs-result:hover {
+  background: var(--pill);
+}
+.hs-result:hover .hs-label {
+  color: var(--coral);
+}
+.hs-result.inert {
+  cursor: default;
+}
+.hs-result.inert:hover .hs-label {
+  color: inherit;
+}
+
+.hs-badge {
+  font-size: 12px;
+  text-align: center;
+  padding: 3px 9px;
+  border-radius: 5rem;
+  background: var(--pill);
+  color: var(--ink-soft);
+}
+.hs-badge.c-clientes { background: #f3eef6; color: #7a5c86; }
+.hs-badge.c-ventas { background: #e7f6ea; color: var(--green); }
+.hs-badge.c-viticultura,
+.hs-badge.c-vinificacion,
+.hs-badge.c-embotellado,
+.hs-badge.c-trazabilidad { background: #fdecec; color: var(--coral); }
+.hs-badge.c-compras,
+.hs-badge.c-stock,
+.hs-badge.c-inventario { background: #fdf2e1; color: #c8861f; }
+
+.hs-main {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+}
+.hs-label {
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.15s ease;
+}
+.hs-subtitle {
+  font-size: 12px;
+  color: var(--ink-faint);
+}
+.hs-id {
+  font-size: 12px;
+  color: var(--ink-mute);
+  white-space: nowrap;
+}
+.hs-empty {
+  padding: 18px 12px;
+  color: var(--ink-soft);
+  font-size: 14px;
+}

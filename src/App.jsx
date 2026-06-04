@@ -1,32 +1,34 @@
 import { NavLink, Navigate, Route, Routes } from "react-router-dom";
 import Trazabilidad from "./modules/trazabilidad/Trazabilidad.jsx";
-import Busqueda from "./modules/busqueda/Busqueda.jsx";
 import Estadisticas from "./modules/estadisticas/Estadisticas.jsx";
+import HeaderSearch from "./modules/busqueda/HeaderSearch.jsx";
 
 import DruidaLogo from "./assets/icons/DriudaIcon.svg";
-import SearchIcon from "./assets/icons/SearchIcon.svg?react";
 import EstadisticasIcon from "./assets/icons/EstadisticasIcon.svg?react";
 import ViticulturaIcon from "./assets/icons/ViticulturaIcon.svg?react";
-import BellIcon from "./assets/icons/BellIcon.svg?react";
+import CalendarIcon from "./assets/icons/CalendarIcon.svg?react";
 import ContactsIcon from "./assets/icons/ContactsIcon.svg?react";
 import CheckIcon from "./assets/icons/CheckIcon.svg?react";
 import CircleIcon from "./assets/icons/CircleIcon.svg?react";
 
 const NAV = [
   { to: "/trazabilidad", label: "Trazabilidad", Icon: ViticulturaIcon },
-  { to: "/buscar", label: "Búsqueda", Icon: SearchIcon },
   { to: "/estadisticas", label: "Estadísticas", Icon: EstadisticasIcon },
 ];
 
 export default function App() {
+  const today = new Date();
+  const todayLabel = today.toLocaleDateString("es-AR", {
+    weekday: "long",
+    month: "long",
+    day: "numeric",
+  });
+
   return (
     <div className="app">
       <header className="app-header">
         <img className="app-logo" src={DruidaLogo} alt="Druida" />
-        <div className="header-search">
-          <SearchIcon />
-          <input placeholder="¿Qué querés buscar?" aria-label="Buscar" readOnly />
-        </div>
+        <HeaderSearch />
         <div className="user-circle">TS</div>
       </header>
 
@@ -55,15 +57,16 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Navigate to="/trazabilidad" replace />} />
             <Route path="/trazabilidad" element={<Trazabilidad />} />
-            <Route path="/buscar" element={<Busqueda />} />
             <Route path="/estadisticas" element={<Estadisticas />} />
           </Routes>
         </main>
 
         <aside className="right-rail">
-          <span className="rail-icon">
-            <BellIcon />
-            <span className="rail-badge">4</span>
+          {/* Calendar that always shows today's date number — mirrors the
+              real app's quick-glance date control. */}
+          <span className="rail-icon rail-calendar" title={todayLabel}>
+            <CalendarIcon />
+            <span className="rail-day">{today.getDate()}</span>
           </span>
           <span className="rail-icon"><ContactsIcon /></span>
           <span className="rail-icon"><CheckIcon /></span>

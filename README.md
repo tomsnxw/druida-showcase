@@ -25,7 +25,7 @@ boilerplate CRUD.
 | Module | What it shows |
 | --- | --- |
 | [Traceability](src/modules/trazabilidad) | Domain modelling: self-describing IDs, a derived state machine, natural-sort over composite codes |
-| [Global fuzzy search](src/modules/busqueda) | Normalizing nine heterogeneous collections into one fuzzy-searchable index |
+| [Global fuzzy search](src/modules/busqueda) | The header search bar: normalizing nine heterogeneous collections into one fuzzy-searchable index |
 | [Sales analytics](src/modules/estadisticas) | Pure aggregation reducers feeding a Chart.js dashboard |
 
 ---
@@ -66,16 +66,18 @@ each id into letter/number chunks and compares them piecewise.
 
 ## 2 · Global fuzzy search — `src/modules/busqueda`
 
-One search box over **nine collections** that share no schema — a wine lot, a
-client, an invoice, a stock line. Instead of fuzzy-matching over
-`Object.keys(firstDoc)` (guessing fields from one arbitrary document), each
-collection declares how to **project a document into a common record**
-`{ id, collection, label, subtitle, date }` in
+The search bar that lives in the top header
+([`HeaderSearch.jsx`](src/modules/busqueda/HeaderSearch.jsx)): type and a
+dropdown of matching documents appears. It spans **nine collections** that share
+no schema — a wine lot, a client, an invoice, a stock line. Instead of
+fuzzy-matching over `Object.keys(firstDoc)` (guessing fields from one arbitrary
+document), each collection declares how to **project a document into a common
+record** `{ id, collection, label, subtitle, date }` in
 [`searchRecords.js`](src/modules/busqueda/searchRecords.js).
 
 The payoff: [Fuse.js](https://www.fusejs.io/) indexes a uniform shape with
-weighted fields, the results list renders identically for every type, and adding
-a collection is one entry in a map.
+weighted fields, the dropdown renders identically for every type, and adding a
+collection is one entry in a map.
 
 ## 3 · Sales analytics — `src/modules/estadisticas`
 
