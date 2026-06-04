@@ -16,17 +16,19 @@ Firestore documents, so the UI and aggregation code run unchanged.
 
 ---
 
-## Why these three
+## What's inside
 
-Druida is a large app; these modules were chosen because each is **technically
+Druida is a large app; these pieces were chosen because each is **technically
 interesting, self-contained, and shows a concrete design decision** rather than
-boilerplate CRUD.
+boilerplate CRUD. The first three run live in the demo; the fourth is backend
+code to read.
 
-| Module | What it shows |
+| Piece | What it shows |
 | --- | --- |
 | [Traceability](src/modules/trazabilidad) | Domain modelling: self-describing IDs, a derived state machine, natural-sort over composite codes |
 | [Global fuzzy search](src/modules/busqueda) | The header search bar: normalizing nine heterogeneous collections into one fuzzy-searchable index |
 | [Sales analytics](src/modules/estadisticas) | Pure aggregation reducers feeding a Chart.js dashboard |
+| [Conversational agent](agent) | A Gemini agent with 16 Firestore function-calling tools (backend code) |
 
 ---
 
@@ -99,6 +101,21 @@ and isolated** in [`analytics.js`](src/modules/estadisticas/analytics.js)
 unit-testable without React in the room.
 
 ---
+
+## 4 · Conversational data agent — `agent/`
+
+The backend behind Druida's in-app assistant: a **Gemini agent that answers
+questions about the winery by calling read-only Firestore tools**
+([`agent.py`](agent/agent.py)). Ask *"¿cuál fue la venta más cara este mes?"* and
+it picks the right tool, queries Firestore, and answers grounded in real data.
+
+Highlights: a simple tool-calling loop (`while response.function_calls: …`),
+**16 query tools** registered for Gemini function calling, multi-hop chains
+(tracing a finished wine back to its grape's soil), and per-thread persistence
+with auto-generated titles. This is the real production code, tidied and scrubbed
+of secrets — see the [walkthrough](agent/README.md). The live demo above doesn't
+wire up the chat UI (it needs a Gemini key and Firestore), so the agent is here
+to read.
 
 ## The demo seam
 
