@@ -1,0 +1,181 @@
+/* Faithful port of Druida's document-detail styles (classes lifted from the
+   production App.css: data-label / data-p / tabs-nav / doc-icon / gray-box…). */
+
+.doc-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.doc-detail .page-title {
+  margin-bottom: 4px;
+}
+
+/* Detail header: icon + id, creado por, última modificación. */
+.doc-detail-header {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  padding: 0 10px;
+}
+.header-column {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.header-column.header-id {
+  flex-direction: row;
+  gap: 12px;
+  align-items: center;
+}
+.header-label {
+  font-size: 13px;
+  color: var(--ink-strong);
+  margin: 0 0 5px;
+}
+.header-value {
+  font-size: 13px;
+  color: #b3b3b3;
+  margin: 2px 0;
+}
+.header-value.doc-id {
+  font-size: 18px;
+  color: var(--ink-strong);
+}
+.doc-icon-container {
+  display: flex;
+  width: 40px;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: var(--coral);
+  flex-shrink: 0;
+}
+.doc-icon {
+  width: 24px;
+  height: 24px;
+  fill: #fff;
+}
+
+/* Tabs (Viticultura / Vinificación / Embotellado). */
+.tabs-nav {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  border-bottom: 1px solid #ccc;
+}
+.tabs-nav li {
+  text-align: center;
+  padding-left: 10px;
+  text-transform: uppercase;
+}
+.tabs-nav li a {
+  display: block;
+  padding: 10px 0;
+  width: 160px;
+  font-size: 12px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border: 1px solid transparent;
+  text-decoration: none;
+  color: #888;
+}
+.tabs-nav li.active a {
+  background: #fff;
+  color: #333;
+  border: 1px solid #e0e0e0;
+  border-bottom: 1px solid #fff;
+  position: relative;
+  top: 2px;
+}
+
+/* Partida selector (when a rollup blends multiple vinification batches). */
+.partida-selector {
+  display: flex;
+  gap: 18px;
+  padding: 4px 10px 0;
+}
+.partida-selector button {
+  background: none;
+  border: none;
+  padding: 6px 0;
+  font-family: var(--font);
+  font-size: 13px;
+  color: #b3b3b3;
+  cursor: pointer;
+}
+.partida-selector button.active {
+  color: var(--coral);
+}
+
+.tab-content {
+  padding-top: 6px;
+}
+
+/* Data columns. */
+.columns-container {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  flex-wrap: wrap;
+  padding: 0 10px;
+}
+.data-column {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 220px;
+}
+.data-label {
+  color: #b3b3b3;
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin: 8px 0 0;
+}
+.data-p {
+  color: var(--ink);
+  font-size: 18px;
+  margin: 0;
+}
+.data-p.bold {
+  font-weight: 700;
+}
+.data-p.cap {
+  text-transform: capitalize;
+}
+.data-p.link {
+  color: var(--coral);
+  cursor: pointer;
+}
+.data-p.big {
+  font-size: 40px;
+  font-weight: 100;
+  color: var(--ink-strong);
+}
+.data-hr {
+  border: 0;
+  border-top: 1px solid #eaeef5;
+  margin: 10px 0 0;
+}
+
+.gray-box {
+  background: var(--chrome);
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 12px;
+}
+
+.dd-state {
+  padding: 40px;
+  color: var(--ink-soft);
+}

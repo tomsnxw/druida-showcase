@@ -1,5 +1,6 @@
 import { NavLink, Navigate, Route, Routes } from "react-router-dom";
 import Trazabilidad from "./modules/trazabilidad/Trazabilidad.jsx";
+import DocDetail from "./modules/trazabilidad/DocDetail.jsx";
 import Estadisticas from "./modules/estadisticas/Estadisticas.jsx";
 import HeaderSearch from "./modules/busqueda/HeaderSearch.jsx";
 
@@ -57,6 +58,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Navigate to="/trazabilidad" replace />} />
             <Route path="/trazabilidad" element={<Trazabilidad />} />
+            <Route path="/trazabilidad/:id" element={<DocDetail />} />
             <Route path="/estadisticas" element={<Estadisticas />} />
           </Routes>
         </main>

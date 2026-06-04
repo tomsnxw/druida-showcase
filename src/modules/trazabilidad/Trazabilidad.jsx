@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { getCollection } from "../../services/dataService.js";
 import { compareLotIds } from "./naturalSort.js";
 import ViticulturaIcon from "../../assets/icons/ViticulturaIcon.svg?react";
@@ -53,10 +54,10 @@ function StatusLabel({ estado }) {
   );
 }
 
-function RecentCard({ doc }) {
+function RecentCard({ doc, onOpen }) {
   const ok = doc.estado === "finalizado";
   return (
-    <article className="doc-card">
+    <article className="doc-card" onClick={onOpen}>
       <span className={`status-dot ${ok ? "green" : "yellow"}`} />
       <div className="doc-card-body">
         <span className="doc-card-id">{doc.id}</span>
@@ -75,11 +76,14 @@ const COLUMNS = [
 ];
 
 export default function Trazabilidad() {
+  const navigate = useNavigate();
   const [docs, setDocs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [filter, setFilter] = useState("Todos");
   const [sort, setSort] = useState({ column: "fecha_creacion", dir: "desc" });
+
+  const open = (id) => navigate(`/trazabilidad/${id}`);
 
   useEffect(() => {
     let active = true;
@@ -150,7 +154,7 @@ export default function Trazabilidad() {
         <h2 className="section-title">Recientes</h2>
         <div className="trz-recent-grid">
           {recent.map((doc) => (
-            <RecentCard key={`${doc.coleccion}-${doc.id}`} doc={doc} />
+            <RecentCard key={`${doc.coleccion}-${doc.id}`} doc={doc} onOpen={() => open(doc.id)} />
           ))}
         </div>
       </section>
@@ -186,7 +190,11 @@ export default function Trazabilidad() {
           {rows.map((doc) => {
             const Icon = COLLECTION_ICON[doc.coleccion];
             return (
-              <div className="trz-row" key={`${doc.coleccion}-${doc.id}`}>
+              <div
+                className="trz-row clickable"
+                key={`${doc.coleccion}-${doc.id}`}
+                onClick={() => open(doc.id)}
+              >
                 <span className="trz-cell id">
                   {Icon && <Icon className="trz-col-icon" />}
                   {doc.id}

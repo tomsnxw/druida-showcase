@@ -61,6 +61,15 @@ no flag for someone to forget to flip.
 not lexically). [`naturalSort.js`](src/modules/trazabilidad/naturalSort.js) splits
 each id into letter/number chunks and compares them piecewise.
 
+**Chain reconstruction.** Clicking a record opens its detail
+([`DocDetail.jsx`](src/modules/trazabilidad/DocDetail.jsx)). A `trazabilidad`
+rollup stores only references — which bottling run it produced and which
+vinification batches fed it — so the view walks them to rebuild the whole story:
+*batch → vinification → origin vineyard lot*, surfaced as tabs over the chain.
+The walk is a pure function in [`chain.js`](src/modules/trazabilidad/chain.js).
+This showcase is read-only; the production detail also edits and uploads label
+artwork (Firebase Storage / backend), which is out of scope here.
+
 > The pure functions here are JS ports of the original Flask/Firestore backend
 > logic, isolated so the rule set is the single source of truth.
 
