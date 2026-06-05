@@ -169,7 +169,7 @@ Druida is hosted and operational, currently used by the Finca Los Astros team to
 **Tomás Rodrigo Sitta**
 AI Product Builder · Full-Stack Developer · Designer
 
-[LinkedIn](https://linkedin.com/in/tomas-sitta) · [Portfolio](https://tomassitta.com) · [Behance](https://behance.net/tomsrsitta) · [Email](mailto:410toms@gmail.com)
+[LinkedIn](https://linkedin.com/in/tomas-sitta) · [Portfolio](https://tomasrodrigositta.web.app) · [Behance](https://behance.net/tomsrsitta) · [Email](mailto:410toms@gmail.com)
 
 ---
 
