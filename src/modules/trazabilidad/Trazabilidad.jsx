@@ -147,7 +147,6 @@ export default function Trazabilidad() {
     <div className="trz">
       <header className="trz-head">
         <h1 className="page-title">Trazabilidad</h1>
-        <p className="page-sub">Cadena de custodia del viñedo a la botella.</p>
       </header>
 
       <div className="page-scroll">
