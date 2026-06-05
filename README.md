@@ -6,7 +6,7 @@
 
 **Live showcase**: `npm run dev` (runs fully offline, no credentials needed)
 **Companion storefront**: [fincalosastros.com.ar](https://fincalosastros.com.ar)
-**Portfolio**: [tomassitta.com](https://tomassitta.com)
+**Portfolio**: [tomassitta.com](https://tomasrodrigositta.web.app)
 
 ---
 
