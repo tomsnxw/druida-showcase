@@ -5,7 +5,7 @@
 ![Druida dashboard](./docs/screenshots/estadisticas.png)
 
 **Live showcase**: `npm run dev` (runs fully offline, no credentials needed)
-**Companion storefront**: [fincalosastros.com.ar](https://fincalosastros.com.ar)
+**Companion storefront**: [fincalosastros.com](https://fincalosastros.com)
 **Portfolio**: [tomassitta.com](https://tomasrodrigositta.web.app)
 
 ---
@@ -43,7 +43,7 @@ The project didn't start as an ERP. It started as a single-purpose tool — trac
 
 ## About Finca Los Astros
 
-Finca Los Astros is a winery startup in Godoy Cruz, Mendoza (Argentina), currently in its first planting season. It's a family business — the founders are my uncles — and I came in as the partner responsible for the entire technology stack.
+Finca Los Astros is a winery startup in Godoy Cruz, Mendoza (Argentina), with two wine brands already in active sale. It's a family business — the founders are my uncles — and I came in as the partner responsible for the entire technology stack.
 
 The product they had in mind from day one was unusual for a winery: not just wine, but the experience around it. Members are admitted by invitation through a waiting list, with strict yearly renewal rules and access to events, tastings, demonstrations and avant-premieres of new vintages. Wine is never sold through retail — only through this private circle.
 
@@ -160,7 +160,7 @@ To read the agent backend code: see [`agent/README.md`](agent/README.md). Runnin
 
 ## Project status
 
-Druida is hosted and operational, currently used by the Finca Los Astros team to set up workflows ahead of the winery's first production season. Built solely by me as the partner responsible for the technology stack.
+Druida is hosted and in real day-to-day production use by the Finca Los Astros team, running the ERP and ecommerce for two wine brands already in active sale. Built solely by me as the partner responsible for the technology stack.
 
 ---
 
